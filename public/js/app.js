@@ -16,8 +16,18 @@ weatherForm.addEventListener('submit', (e) => {
                 messageOne.textContent = data.error
             }
             else {
-                messageOne.textContent = data.location
-                messageTwo.textContent = `Its ${data.forcast.temp} C out there with summary ${data.forcast.summary}`               
+                messageTwo.textContent = `Forcast is ${data.forcast}`               
+            }
+        })
+    })
+
+    fetch(`/weatherr?address=${location}`).then((response) => {
+        response.json().then((data) => {
+            if (data.error) {
+                messageOne.textContent = data.error
+            }
+            else {
+                messageOne.textContent = `Its ${data.temp} °C out there in ${data.location}`  
             }
         })
     })
