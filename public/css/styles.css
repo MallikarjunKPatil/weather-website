@@ -1,5 +1,5 @@
 body {
-    color: #333333;
+    color: #0e313b;
     font-family: Arial, Helvetica, sans-serif;
     max-width: 650px;
     margin: 0 auto;
@@ -10,20 +10,39 @@ body {
     min-height: 100vh;
 }
 
+body::after {
+    content: "";
+    background: url("../css/backgound.png");
+    background-size: cover;
+    background-position: center;
+    opacity: 0.5;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;   
+  }
+
 .main-content {
     flex-grow: 1;
 }
 
+form {
+    margin-bottom: 40px;
+}
+
 footer {
-    color: #888888;
-    border-top: 1px solid #eeeeee;
+    color: #154957;
+    border-top: 1px solid #154957;
     margin-top: 16px;
     padding: 16px 0;
 }
 
 header {
-    margin-top: 16px;
+    margin-top: 50px;
     margin-bottom: 48px;
+    color: #0c2830;
 }
 
 h1 {
@@ -32,7 +51,7 @@ h1 {
 }
 
 header a {
-    color: #888888;
+    color: #154957;
     margin-right: 16px;
     text-decoration: none;
 }
@@ -42,16 +61,24 @@ header a {
 }
 
 input {
-    border: 1px solid #888888;
-    outline: 1px solid #888888;
+    border: 1px solid #206b8091;
+    outline: 1px solid #206b8091;
     padding: 8px;
 }
 
 button {
     cursor: pointer;
-    border: 1px solid #888888;
-    outline: 1px solid #888888;
-    background: #888888;
+    border: 1px solid #0c2830;
+    outline: 1px solid #0c2830;
+    background: #0c2830;
     color: white;
     padding: 8px;
+}
+
+#message-1 {
+    font-weight: bold;
+}
+
+#message-2 {
+    font-weight: bold;
 }

@@ -2,8 +2,7 @@ const path = require('path')
 const express = require('express')
 const hbs = require('hbs')
 const geocode = require('./utils/geocode')
-const forcastData = require('./utils/forcast')
-
+const forcast = require('./utils/forcast')
 
 
 const app = express()
@@ -27,7 +26,6 @@ app.get('', (req, res) => {
         title: 'Weather App',
         name: 'Mallikarjun Patil'
     })
-
 })
 
 app.get('/about', (req, res) => {
@@ -56,8 +54,7 @@ app.get('/weather', (req, res) => {
                 error
             })
         }
-
-        forcastData.forcast(longitude, latitude, (error, forcastData) => {
+        forcast(longitude, latitude, (error, forcastData) => {
             if (error) {
                 return res.send({
                     error
@@ -66,33 +63,8 @@ app.get('/weather', (req, res) => {
             res.send({
                 forcast: forcastData.summary,
                 location,
-                address: req.query.address,
-
-            })
-        })
-    })
-})
-
-app.get('/weatherr', (req, res) => {
-    if (!req.query.address) {
-        return res.send({
-            error: 'You must provide address !'
-        })
-    }
-    geocode(req.query.address, (error, { longitude, latitude} = {}) => {
-        if (error) {
-            return res.send({
-                error
-            })
-        }
-        forcastData.temp(longitude, latitude, (error, tempData) => {
-            if (error) {
-                return res.send({
-                    error
-                })
-            }
-            res.send({
-                temp: tempData.temp
+                temp: forcastData.temp,
+                address: req.query.address
             })
         })
     })
